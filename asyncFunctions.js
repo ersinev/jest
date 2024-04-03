@@ -12,4 +12,14 @@ const fetchPlaceHolder = async () => {
     return data
 
 }
-module.exports = {fetchData, fetchPlaceHolder}
+
+const fetchById = async (postId) => {
+    let res = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+    if(!res.ok){
+        throw new Error('Failed to fetch the post')
+    }
+    
+    let data = await res.json()
+    return data
+}
+module.exports = {fetchData, fetchPlaceHolder,fetchById}
